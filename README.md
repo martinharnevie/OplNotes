@@ -8,11 +8,12 @@ OPL's main strength was the ease with which it could #include C++ libraries for 
 dpNotes are a collection of - hopefully - useful ideas for the furtherance of OPL programming. In dpNotes we focus primarily on Symbian OS v6 (ER6) and later, though some of it was around already at v5 (ER5). A big difference between v1-v5 and v6-v7 and later is that the former was based on ASCII whereas the latter was on Unicode.
 
 Clarification of OPL versions:
-
+```
 ER5 - Symbian v5, extended Ascii, Psion Series 5, Series 5mx, Series 7, netPad and netBook
 ER5u - Symbian v5.1, Unicode, Ericsson R380
 ER6 - Symbian v6, Nokia 92xx Communicators, Unicode
 ER7 - Symbian v7, Nokia 9300, 9500 Communicators, Series 80, Series 90, UIQ and Series 60, Unicode
+```
 
 ```
 dpNote 0001 - Finding out the number of images in an MBM file
