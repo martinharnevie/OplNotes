@@ -14,6 +14,7 @@ ER5u - Symbian v5.1, Unicode, Ericsson R380
 ER6 - Symbian v6, Nokia 92xx Communicators, Unicode
 ER7 - Symbian v7, Nokia 9300, 9500 Communicators, Series 80, Series 90, UIQ and Series 60, Unicode
 
+```
 dpNote 0001 - Finding out the number of images in an MBM file
 dpNote 0002 - Using the Nokia 9200 Series Communicator system fonts
 dpNote 0003 - Getting the path to the location of an OPL application
@@ -44,5 +45,6 @@ dpNote 0027 - Launching an application from OPL and wait until it finishes befor
 dpNote 0028 - Asynchronous event loop with inactivity timer
 dpNote 0029 - Key event codes for Series 60 phones
 dpNote 0030 - Returning more than one value
+```
 
 Documented in the OPLnotes PDF now. 
