@@ -7,6 +7,13 @@ OPL's main strength was the ease with which it could #include C++ libraries for 
 
 dpNotes are a collection of - hopefully - useful ideas for the furtherance of OPL programming. In dpNotes we focus primarily on Symbian OS v6 (ER6) and later, though some of it was around already at v5 (ER5). A big difference between v1-v5 and v6-v7 and later is that the former was based on ASCII whereas the latter was on Unicode.
 
+Clarification of OPL versions:
+
+ER5 - Symbian v5, extended Ascii, Psion Series 5, Series 5mx, Series 7, netPad and netBook
+ER5u - Symbian v5.1, Unicode, Ericsson R380
+ER6 - Symbian v6, Nokia 92xx Communicators, Unicode
+ER7 - Symbian v7, Nokia 9300, 9500 Communicators, Series 80, Series 90, UIQ and Series 60, Unicode
+
 dpNote 0001 - Finding out the number of images in an MBM file
 dpNote 0002 - Using the Nokia 9200 Series Communicator system fonts
 dpNote 0003 - Getting the path to the location of an OPL application
@@ -38,68 +45,4 @@ dpNote 0028 - Asynchronous event loop with inactivity timer
 dpNote 0029 - Key event codes for Series 60 phones
 dpNote 0030 - Returning more than one value
 
-dpNote 0001, 2 July 2002, All OPL versions - Finding out the number of images in an MBM file
---------------------------------------------------------------------------------------------
-
-This procedure is quite useful when the number of images in an MBM file is unknown.
-Usage: NumberOfImages&=IoMbmImages&:(aMbmFileName$)
-
-CONST KMbmFileImageCounterOffset&=&00000010
-CONST KLongSize&=4
-
-PROC IoMbmImages&:(aMbmFileName$)
-LOCAL IoStatus%,hMbm%,IoMode%,Offset&,NoOfImages&
-// open the image file
-IoMode%=KIoModeOpen% OR KIoFormatBinary% OR KIoAccessRandom% OR KIoAccessShare%
-IoStatus%=IOOPEN(hMbm%,aMbmFileName$,IoMode%)
-IF IoStatus%<0
-  RAISE KErrNotExists%
-ENDIF
-// move to the position of the offset address of the image counter
-Offset&=KMbmFileImageCounterOffset&
-IOSEEK(hMbm%,1,Offset&)
-// read the position of the image counter
-IOREAD(hMbm%,ADDR(Offset&),KLongSize&)
-// move to the position of the image counter
-IOSEEK(hMbm%,1,Offset&)
-// read the image counter
-IOREAD(hMbm%,ADDR(NoOfImages&),KLongSize&)
-// close the image file
-IOCLOSE(hMbm%)
-// return number of images in file
-RETURN NoOfImages&
-ENDP
-
-dpNote 0002, 5 July 2002, v6 Series 80 R1	- Using the Nokia 9200 Series Communicator system fonts
--------------------------------------------------------------------------------------------------
-
-The Const.oph file for Symbian OS v6.0 does not include the font UIDs for the Nokia 9200 Series Communicator. You could add the following constants to your Const.oph file to address this:
-
-CONST KFontLindaBold16&=         268457209 // &100054F9
-CONST KFontLindaBold18&=         268457210
-CONST KFontLindaBold20&=         268457211 // in CBA titles for 9210
-CONST KFontLindaBold22&=         268457212
-CONST KFontLindaBold24&=         268457213
-CONST KFontLindaBold29&=         268457214
-CONST KFontLindaBoldItalic20&=   268457215
-CONST KFontLindaItalic20&=       268457216
-CONST KFontLindaNarrow20&=       268457217
-CONST KFontLindaNarrow24&=       268457218
-CONST KFontLindaNarrow29&=       268457219
-CONST KFontLindaNormal18&=       268457220
-CONST KFontLindaNormal20&=       268457221 // in gIPRINT for 9210
-CONST KFontLindaNormal24&=       268457222
-CONST KFontLindaNormal29&=       268457223 // &10005507
-
-CONST KFontTerminalNormal8&=     268437778 // &10000912, same in ER5
-CONST KFontTerminalZoomed15&=    268437779 // &10000913, same in ER5
-
-The fonts are now selectable with gFONT as normal.
-
-The designations given are now taken from the 9210 screen layout document. They are slightly modified to comply with OPL coding standards.
-
-The KFontLindaBold20& UID is particularly useful if you wish to have a consistent font on your CBA titles.
-
-And the KFontLindaNormal20& UID is useful if you wish to create variants of gIPRINT and ALERT messages. By the way, the green frame has the RGB value KRgbMessageBorderGreen&=&008800.
-
-
+Documented in the OPLnotes PDF now. 
